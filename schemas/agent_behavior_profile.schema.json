@@ -1,0 +1,26 @@
+{
+  "$id": "https://l9.dev/schemas/agent_behavior_profile.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "agent": {
+      "type": "string"
+    },
+    "contract_modifiers": {
+      "type": "object"
+    },
+    "observed_risks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "agent",
+    "observed_risks",
+    "contract_modifiers"
+  ],
+  "title": "Agent Behavior Profile",
+  "type": "object"
+}

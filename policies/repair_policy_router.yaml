@@ -1,0 +1,11 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [policy]
+# tags: [repair-policy]
+# owner: platform
+# status: active
+# --- /L9_META ---
+schema_version: "1.0"
+default_max_attempts: 3
+high_risk_max_attempts: 2

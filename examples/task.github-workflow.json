@@ -1,0 +1,13 @@
+{
+  "agent": "codex",
+  "constraints": [
+    "no secret exposure",
+    "include run_id and run_attempt"
+  ],
+  "expected_paths": [
+    ".github/workflows/dispatch-intelligence.yml",
+    "src/pr_repair/exporters/intelligence_dispatch.py"
+  ],
+  "objective": "Add dispatch validation for PR repair corpus export touching GitHub workflow permissions and artifact coordinates.",
+  "task_type": "github_workflow"
+}

@@ -1,0 +1,15 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [policy]
+# tags: [profile]
+# owner: platform
+# status: active
+# --- /L9_META ---
+schema_version: "1.0"
+profiles:
+  - minimal
+  - standard
+  - security
+  - release
+  - agent-review

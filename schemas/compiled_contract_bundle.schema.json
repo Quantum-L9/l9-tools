@@ -1,0 +1,23 @@
+{
+  "$id": "https://l9.dev/schemas/compiled_contract_bundle.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "contract_markdown": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_id",
+    "contract_markdown"
+  ],
+  "title": "Compiled Contract Bundle",
+  "type": "object"
+}

@@ -1,0 +1,13 @@
+{
+  "agent": "claude_code",
+  "constraints": [
+    "preserve public schema version",
+    "update examples if schema changes"
+  ],
+  "expected_paths": [
+    "schemas/coding_contract.schema.json",
+    "src/l9_tools/contracts/validators.py"
+  ],
+  "objective": "Tighten coding contract schema validation without changing the public contract shape.",
+  "task_type": "schema_change"
+}

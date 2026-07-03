@@ -1,0 +1,42 @@
+{
+  "$id": "https://l9.dev/schemas/contract_clause.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "clause_id": {
+      "type": "string"
+    },
+    "must": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "must_not": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "source": {
+      "type": "object"
+    },
+    "trigger": {
+      "type": "object"
+    },
+    "validation": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "clause_id",
+    "must",
+    "must_not",
+    "validation"
+  ],
+  "title": "Contract Clause",
+  "type": "object"
+}

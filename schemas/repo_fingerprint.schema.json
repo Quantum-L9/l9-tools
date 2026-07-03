@@ -1,0 +1,41 @@
+{
+  "$id": "https://l9.dev/schemas/repo_fingerprint.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "contract_strictness": {
+      "type": "string"
+    },
+    "fragile_paths": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "primary_risks": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "recommended_ci_profile": {
+      "type": "string"
+    },
+    "repo": {
+      "type": "string"
+    },
+    "required_contract_clauses": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "repo",
+    "contract_strictness",
+    "primary_risks"
+  ],
+  "title": "Repo Health Fingerprint",
+  "type": "object"
+}

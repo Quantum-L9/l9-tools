@@ -1,0 +1,24 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [policy]
+# tags: [risk]
+# owner: platform
+# status: active
+# --- /L9_META ---
+schema_version: "1.0"
+high_risk_paths:
+  - .github/workflows/**
+  - pyproject.toml
+  - package.json
+  - schemas/**
+high_risk_keywords:
+  - token
+  - secret
+  - permission
+  - dispatch
+  - artifact
+  - publish
+  - release
+  - workflow
+  - schema

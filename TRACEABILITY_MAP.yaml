@@ -1,0 +1,42 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [traceability]
+# tags: [defects, fixes, validation]
+# owner: platform
+# status: active
+# --- /L9_META ---
+
+traceability:
+  - defect: corrupted_rich_text_quotes
+    fix: pack_v2_uses_python_writer_and_ascii_only_content
+    validation: run_validation_shell_parse
+  - defect: invalid_toml
+    fix: pyproject_toml_rewritten_with_ascii_quotes_and_valid_comments
+    validation: python_packaging_parse_available_via_install_or_build
+  - defect: makefile_tab_loss
+    fix: makefile_written_with_literal_tab_characters
+    validation: make_validate
+  - defect: missing_original_spec_files
+    fix:
+      - src/l9_tools/contracts/schemas.py
+      - src/l9_tools/retrieval/ranking.py
+      - tests/test_profile_router.py
+      - tests/test_retrieval_policy.py
+      - examples/task.schema-change.json
+      - examples/compiled_contract.example.md
+    validation: run_validation_sh
+  - defect: missing_mcp_select_agent_tool
+    fix: l9_contract_select_agent_added_to_mcp_tools
+    validation: tests/test_mcp_tools.py
+  - defect: missing_governance_artifacts
+    fix:
+      - UNKNOWN_REGISTER.md
+      - FINAL_TREE.md
+      - REGRESSION_GUARD.md
+      - TRACEABILITY_MAP.yaml
+      - IMPROVEMENT_REPORT.md
+      - DELTA_REPORT.md
+      - CONVERGENCE_REPORT.yaml
+      - improvement_log.jsonl
+    validation: file_presence_and_manifest

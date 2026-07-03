@@ -1,0 +1,16 @@
+{
+  "playbooks": [
+    {
+      "confidence_hint": "high",
+      "match": {
+        "failure_type": "workflow_dispatch_artifact_gap",
+        "root_cause": "dispatch payload lacked run_id and run_attempt"
+      },
+      "playbook_id": "repair-pattern-dispatch-coordinates",
+      "preferred_patch_type": "add_dispatch_coordinates",
+      "recommended_action": "Patch workflow dispatch payload with deterministic artifact fetch coordinates.",
+      "schema_version": "1.0"
+    }
+  ],
+  "schema_version": "1.0"
+}

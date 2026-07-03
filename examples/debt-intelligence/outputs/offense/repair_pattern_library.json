@@ -1,0 +1,26 @@
+{
+  "patterns": [
+    {
+      "blocked_count": 0,
+      "example_files": [
+        ".github/workflows/dispatch-intelligence.yml"
+      ],
+      "example_repos": [
+        "Quantum-L9/PR_Repair"
+      ],
+      "failed_count": 0,
+      "failure_type": "workflow_dispatch_artifact_gap",
+      "patch_type": "add_dispatch_coordinates",
+      "pattern_id": "repair-pattern-dispatch-coordinates",
+      "promote_to_core": true,
+      "promote_to_lsp": true,
+      "promote_to_sdk": true,
+      "promotion_reason": "Repeated successful repairs with no failed outcomes.",
+      "recommended_action": "Include source_repo, source_sha, run_id, run_attempt, and artifact_name in dispatch payload.",
+      "root_cause": "dispatch payload lacked run_id and run_attempt",
+      "schema_version": "1.0",
+      "success_count": 3
+    }
+  ],
+  "schema_version": "1.0"
+}

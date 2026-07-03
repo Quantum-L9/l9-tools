@@ -1,0 +1,37 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [convergence-report]
+# tags: [recursive-improvement, convergence]
+# owner: platform
+# status: active
+# --- /L9_META ---
+
+passes_run: 2
+pass_summaries:
+  - pass_id: 1
+    focus: identify_alignment_and_execution_defects
+    material_findings:
+      - strategic_alignment_pass
+      - execution_safety_fail
+      - missing_spec_files
+      - missing_governance_artifacts
+  - pass_id: 2
+    focus: generate_clean_ascii_v2
+    material_changes:
+      - ascii_only_generation
+      - missing_files_added
+      - mcp_select_agent_added
+      - validation_artifacts_added
+improvement_ratio_by_pass:
+  pass_1: "defect_map_created"
+  pass_2: "execution_safety_improved"
+cumulative_improvement_estimate: "high"
+remaining_known_defects:
+  - validation_not_run_in_remote_chat_environment
+unresolved_unknowns:
+  - live_graphiti_endpoint
+  - live_code_graph_endpoint
+  - consuming_environment_debt_intelligence_path
+stop_condition_triggered: "ready_for_local_validation"
+final_recommendation: "Run ./run_validation.sh locally before commit."

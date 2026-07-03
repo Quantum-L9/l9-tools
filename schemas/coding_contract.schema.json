@@ -1,0 +1,70 @@
+{
+  "$id": "https://l9.dev/schemas/coding_contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "contract_markdown": {
+      "type": "string"
+    },
+    "must": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "must_not": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "output_evidence": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "remaining_unknowns": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "request": {
+      "type": "object"
+    },
+    "retrieved_evidence": {
+      "type": "array"
+    },
+    "routing": {
+      "type": "object"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "validation": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "contract_id",
+    "request",
+    "routing",
+    "must",
+    "must_not",
+    "validation",
+    "output_evidence",
+    "retrieved_evidence",
+    "remaining_unknowns",
+    "contract_markdown"
+  ],
+  "title": "L9 Coding Contract",
+  "type": "object"
+}

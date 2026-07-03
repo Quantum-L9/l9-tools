@@ -1,0 +1,25 @@
+{
+  "contract_strictness": "high",
+  "forbidden_contract_clauses": [
+    "Do not auto-merge.",
+    "Do not mutate protected branches."
+  ],
+  "fragile_paths": [
+    ".github/workflows/**",
+    "src/pr_repair/exporters/**",
+    "schemas/**"
+  ],
+  "primary_risks": [
+    "same-branch mutation safety",
+    "max attempt enforcement",
+    "artifact schema drift",
+    "token permission boundaries"
+  ],
+  "recommended_ci_profile": "security",
+  "repo": "Quantum-L9/PR_Repair",
+  "required_contract_clauses": [
+    "Preserve max-3 repair attempt evidence.",
+    "Validate corpus before dispatch.",
+    "Include deterministic artifact fetch coordinates."
+  ]
+}

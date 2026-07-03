@@ -1,0 +1,17 @@
+# --- L9_META ---
+# l9_schema: 1
+# origin: l9-tools
+# layer: [policy]
+# tags: [retrieval]
+# owner: platform
+# status: active
+# --- /L9_META ---
+schema_version: "1.0"
+priority_order:
+  - repo_fingerprint
+  - contract_clause
+  - repair_pattern
+  - pr_repair_playbook
+  - error_taxonomy
+  - raw_finding
+unknown_policy: emit_explicit_unknown
