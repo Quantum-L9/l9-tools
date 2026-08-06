@@ -29,6 +29,11 @@ PYTHONPATH=src python -m unittest discover -s tests -p 'test_*.py'
 PYTHONPATH=src python -m l9_tools.cli compile --repo Quantum-L9/PR_Repair --task examples/task.github-workflow.json --agent codex --debt-intelligence-root examples/debt-intelligence --out-dir out/example
 PYTHONPATH=src python -m l9_tools.cli validate out/example/contract_bundle.json
 PYTHONPATH=src python -m l9_tools.cli select-agent --agent codex
+PYTHONPATH=src python -m l9_tools.audit.cli run . --out out/audit-findings.json
 ```
+
+The audit engine is deterministic and read-only: two runs over the same repo
+state produce a byte-identical findings envelope, and `--fail-on` returns a
+non-zero exit code only when findings meet the threshold.
 
 No validation pass is claimed until these commands are run in the target environment.

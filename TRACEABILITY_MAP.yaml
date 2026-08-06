@@ -40,3 +40,17 @@ traceability:
       - CONVERGENCE_REPORT.yaml
       - improvement_log.jsonl
     validation: file_presence_and_manifest
+  - defect: no_repo_audit_evidence_layer_for_contract_compiler
+    fix:
+      - src/l9_tools/audit/finding_schema.py
+      - src/l9_tools/audit/cli.py
+      - src/l9_tools/audit/engine/  # repo_index, readonly, symbols, ts_syntax, leverage, run
+      - src/l9_tools/audit/engine/detectors/  # native, semantic, adapters, preflight_bridge, registry
+      - l9-audit console script + l9_audit_run / l9_audit_gate MCP tools
+      - tests/test_audit_engine.py
+      - tests/test_audit_semantic.py
+      - tests/test_audit_ts_interface.py
+      - tests/test_audit_ci_gate.py
+      - tests/test_audit_finding_schema.py
+      - tests/test_audit_mcp.py
+    validation: make_validate  # 60 tests; deterministic + read-only + no-network

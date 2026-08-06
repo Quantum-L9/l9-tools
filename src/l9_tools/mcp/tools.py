@@ -14,6 +14,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from l9_tools.audit.engine.run import gate_exit_code, run_audit
 from l9_tools.contracts.compiler import compile_contract
 from l9_tools.contracts.models import ContractRequest
 from l9_tools.contracts.validators import validate_contract_bundle
@@ -21,6 +22,8 @@ from l9_tools.retrieval.retrieval_policy import retrieve_context
 from l9_tools.routing.agent_router import select_agent_profile
 from l9_tools.routing.profile_router import select_profile
 from l9_tools.routing.risk_router import route_risk
+
+_FAIL_ON = ["none", "low", "medium", "high", "critical", "blocks-release"]
 
 
 TOOL_SCHEMAS: list[dict[str, Any]] = [
@@ -31,6 +34,8 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
     {"name": "l9_contract_select_profile", "description": "Select CI profile from task and routing policy.", "inputSchema": {"type": "object", "required": ["repo", "task"], "properties": {"repo": {"type": "string"}, "task": {"type": "object"}}}},
     {"name": "l9_contract_select_agent", "description": "Return agent-specific contract modifiers.", "inputSchema": {"type": "object", "required": ["agent"], "properties": {"agent": {"type": "string"}}}},
     {"name": "l9_contract_render", "description": "Compile and return only the Markdown contract.", "inputSchema": {"type": "object", "required": ["repo", "task"], "properties": {"repo": {"type": "string"}, "task": {"type": "object"}}}},
+    {"name": "l9_audit_run", "description": "Run the deterministic (no-LLM, read-only) repository audit engine and return the canonical findings envelope.", "inputSchema": {"type": "object", "required": ["repo"], "properties": {"repo": {"type": "string"}, "base_ref": {"type": "string"}, "analyzers": {"type": "array", "items": {"type": "string"}}, "with_preflight": {"type": "boolean"}}}},
+    {"name": "l9_audit_gate", "description": "Run the audit engine and return a CI gate decision (exit_code + summary) for the given fail_on threshold.", "inputSchema": {"type": "object", "required": ["repo"], "properties": {"repo": {"type": "string"}, "base_ref": {"type": "string"}, "analyzers": {"type": "array", "items": {"type": "string"}}, "with_preflight": {"type": "boolean"}, "fail_on": {"type": "string", "enum": _FAIL_ON}}}},
 ]
 
 
@@ -75,7 +80,40 @@ def call_tool(name: str, arguments: dict[str, Any]) -> Any:
     if name == "l9_contract_select_agent":
         return select_agent_profile(str(arguments.get("agent") or "unknown"))
 
+    if name == "l9_audit_run":
+        return _audit_from_args(arguments)
+
+    if name == "l9_audit_gate":
+        report = _audit_from_args(arguments)
+        fail_on = str(arguments.get("fail_on") or "none")
+        if fail_on not in _FAIL_ON:
+            raise ValueError(f"fail_on must be one of {_FAIL_ON}")
+        code = gate_exit_code(report, fail_on)
+        return {
+            "fail_on": fail_on,
+            "exit_code": code,
+            "passed": code == 0,
+            "summary": report["summary"],
+            "msna_id": report["msna_id"],
+            "limitations": report["limitations"],
+        }
+
     raise ValueError(f"unknown tool: {name}")
+
+
+def _audit_from_args(arguments: dict[str, Any]) -> dict[str, Any]:
+    repo = str(arguments.get("repo") or "")
+    if not repo:
+        raise ValueError("repo is required")
+    analyzers = arguments.get("analyzers") or []
+    if not isinstance(analyzers, list):
+        raise ValueError("analyzers must be an array of strings")
+    return run_audit(
+        Path(repo),
+        str(arguments.get("base_ref") or "UNKNOWN"),
+        analyzers=[str(a) for a in analyzers],
+        with_preflight=bool(arguments.get("with_preflight")),
+    )
 
 
 def _compile_from_args(arguments: dict[str, Any]):

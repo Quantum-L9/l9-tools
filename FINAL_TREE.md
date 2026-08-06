@@ -52,6 +52,18 @@ l9-tools/
 │   └── l9_tools/
 │       ├── __init__.py
 │       ├── cli.py
+│       ├── audit/
+│       │   ├── __init__.py
+│       │   ├── cli.py
+│       │   ├── finding_schema.py
+│       │   └── engine/
+│       │       ├── repo_index.py
+│       │       ├── readonly.py
+│       │       ├── symbols.py
+│       │       ├── ts_syntax.py
+│       │       ├── leverage.py
+│       │       ├── run.py
+│       │       └── detectors/
 │       ├── contracts/
 │       ├── mcp/
 │       ├── retrieval/
