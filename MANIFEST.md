@@ -14,10 +14,12 @@ status: active
 * `src/l9_tools/cli.py`: command line interface for compiling, validating, and risk inspection.
 * `src/l9_tools/mcp/server.py`: stdio JSON-RPC MCP-style server.
 * `src/l9_tools/contracts/compiler.py`: contract compilation orchestration.
+* `src/l9_tools/audit/cli.py`: `l9-audit` deterministic repository audit engine.
 
 ## Core modules
 
 * `contracts/`: models, schema helpers, compiler, rendering, validation.
+* `audit/`: deterministic, read-only, no-LLM audit engine — `finding_schema` (canonical `Finding`), `engine/` (repo index, read-only guard, symbols, tree-sitter TS/JS, leverage, run orchestrator), `engine/detectors/` (native + semantic + adapters + preflight bridge).
 * `retrieval/`: source adapters, ranking, and context normalization.
 * `routing/`: risk/profile/agent/repair-policy selection.
 * `mcp/`: stdio tool server and tool dispatcher.

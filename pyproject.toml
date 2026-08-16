@@ -19,11 +19,23 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "Unknown" }
 authors = [{ name = "Quantum-L9" }]
-dependencies = []
+dependencies = [
+    "pydantic>=2",
+]
+
+[project.optional-dependencies]
+# Enables TS/JS interface-arity drift detection (audit 09). Absent -> the
+# auditor degrades gracefully to a recorded limitation; core stays stdlib + pydantic.
+treesitter = [
+    "tree-sitter>=0.25",
+    "tree-sitter-typescript",
+    "tree-sitter-javascript",
+]
 
 [project.scripts]
 l9-contract = "l9_tools.cli:main"
 l9-tools-mcp = "l9_tools.mcp.server:main"
+l9-audit = "l9_tools.audit.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/l9_tools"]
@@ -40,3 +52,9 @@ target-version = "py311"
 python_version = "3.11"
 strict = true
 mypy_path = "src"
+
+# tree-sitter ships no type stubs; the audit engine's TS/JS extractor is an
+# optional path guarded at runtime. Silence the missing-import error only.
+[[tool.mypy.overrides]]
+module = ["tree_sitter", "tree_sitter.*", "tree_sitter_typescript", "tree_sitter_javascript"]
+ignore_missing_imports = true

@@ -20,6 +20,7 @@ Build and maintain `l9-tools` as a reusable, node-neutral tooling layer for L9 c
 * No network calls during tests.
 * No hardcoded credentials.
 * No direct repo mutation from contract compilation.
+* The audit engine (`l9_tools.audit`) is read-only, deterministic, and makes no network or LLM calls; external-analyzer adapters run through the read-only guard and never mutate the repo. Every finding is grounded in a real `path:line`; an absent tool or parser is recorded as a limitation, never fabricated.
 * Missing external memory is represented as `Unknown` or empty evidence, never invented.
 * Compiler output must be both human-readable and machine-readable.
 * Every generated contract must include validation gates and remaining unknowns.
