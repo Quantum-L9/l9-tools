@@ -26,9 +26,9 @@ test:
 	PYTHONPATH=src python -m unittest discover -s tests -p 'test_*.py'
 
 examples:
-	PYTHONPATH=src python -m l9_tools.cli compile --repo Quantum-L9/PR_Repair --task examples/task.github-workflow.json --agent codex --debt-intelligence-root examples/debt-intelligence --out-dir out/example
+	PYTHONPATH=src python -m l9_tools.cli compile --repo Quantum-L9/l9-pr-repair --task examples/task.github-workflow.json --agent codex --debt-intelligence-root examples/debt-intelligence --out-dir out/example
 	PYTHONPATH=src python -m l9_tools.cli validate out/example/contract_bundle.json
-	PYTHONPATH=src python -m l9_tools.cli explain-risk --repo Quantum-L9/PR_Repair --task examples/task.github-workflow.json --debt-intelligence-root examples/debt-intelligence
+	PYTHONPATH=src python -m l9_tools.cli explain-risk --repo Quantum-L9/l9-pr-repair --task examples/task.github-workflow.json --debt-intelligence-root examples/debt-intelligence
 	PYTHONPATH=src python -m l9_tools.audit.cli run . --out out/audit-findings.json
 
 clean:

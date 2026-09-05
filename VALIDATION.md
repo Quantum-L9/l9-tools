@@ -26,7 +26,7 @@ python -m json.tool schemas/agent_behavior_profile.schema.json >/dev/null
 python -m json.tool schemas/retrieval_result.schema.json >/dev/null
 python -m json.tool schemas/compiled_contract_bundle.schema.json >/dev/null
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_*.py'
-PYTHONPATH=src python -m l9_tools.cli compile --repo Quantum-L9/PR_Repair --task examples/task.github-workflow.json --agent codex --debt-intelligence-root examples/debt-intelligence --out-dir out/example
+PYTHONPATH=src python -m l9_tools.cli compile --repo Quantum-L9/l9-pr-repair --task examples/task.github-workflow.json --agent codex --debt-intelligence-root examples/debt-intelligence --out-dir out/example
 PYTHONPATH=src python -m l9_tools.cli validate out/example/contract_bundle.json
 PYTHONPATH=src python -m l9_tools.cli select-agent --agent codex
 PYTHONPATH=src python -m l9_tools.audit.cli run . --out out/audit-findings.json

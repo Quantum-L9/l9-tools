@@ -13,7 +13,7 @@ python -m json.tool schemas/compiled_contract_bundle.schema.json >/dev/null
 PYTHONPATH=src python -m unittest discover -s tests -p 'test_*.py'
 
 PYTHONPATH=src python -m l9_tools.cli compile \
---repo Quantum-L9/PR_Repair \
+--repo Quantum-L9/l9-pr-repair \
 --task examples/task.github-workflow.json \
 --agent codex \
 --debt-intelligence-root examples/debt-intelligence \

@@ -13,7 +13,7 @@ status: active
 
 ```bash
 l9-contract compile \
-  --repo Quantum-L9/PR_Repair \
+  --repo Quantum-L9/l9-pr-repair \
   --task task.json \
   --agent codex \
   --debt-intelligence-root /path/to/l9-ci-debt-intelligence \
@@ -55,7 +55,7 @@ List tools request:
 Call compile tool:
 
 ```json
-{"jsonrpc":"2.0","id":"2","method":"tools/call","params":{"name":"l9_contract_compile","arguments":{"repo":"Quantum-L9/PR_Repair","task":{"objective":"Add dispatch validation","expected_paths":[".github/workflows/**"]},"agent":"codex"}}}
+{"jsonrpc":"2.0","id":"2","method":"tools/call","params":{"name":"l9_contract_compile","arguments":{"repo":"Quantum-L9/l9-pr-repair","task":{"objective":"Add dispatch validation","expected_paths":[".github/workflows/**"]},"agent":"codex"}}}
 ```
 
 ## Unknown handling
