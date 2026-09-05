@@ -16,7 +16,7 @@
     "token permission boundaries"
   ],
   "recommended_ci_profile": "security",
-  "repo": "Quantum-L9/PR_Repair",
+  "repo": "Quantum-L9/l9-pr-repair",
   "required_contract_clauses": [
     "Preserve max-3 repair attempt evidence.",
     "Validate corpus before dispatch.",

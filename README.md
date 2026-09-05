@@ -67,7 +67,7 @@ Compile a contract:
 
 ```bash
 l9-contract compile \
-  --repo Quantum-L9/PR_Repair \
+  --repo Quantum-L9/l9-pr-repair \
   --task examples/task.github-workflow.json \
   --agent codex \
   --debt-intelligence-root examples/debt-intelligence \
@@ -84,7 +84,7 @@ Explain risk without writing a contract:
 
 ```bash
 l9-contract explain-risk \
-  --repo Quantum-L9/PR_Repair \
+  --repo Quantum-L9/l9-pr-repair \
   --task examples/task.github-workflow.json
 ```
 

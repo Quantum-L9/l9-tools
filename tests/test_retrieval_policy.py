@@ -26,7 +26,7 @@ class RetrievalPolicyTests(unittest.TestCase):
         self.assertIn("unknown", kinds)
 
     def test_debt_intelligence_fixture_returns_fingerprint(self) -> None:
-        request = ContractRequest(repo="Quantum-L9/PR_Repair", objective="dispatch artifact", expected_paths=[".github/workflows/dispatch-intelligence.yml"])
+        request = ContractRequest(repo="Quantum-L9/l9-pr-repair", objective="dispatch artifact", expected_paths=[".github/workflows/dispatch-intelligence.yml"])
         evidence = retrieve_context(request, debt_intelligence_root=Path("examples/debt-intelligence"))
         kinds = [item.kind for item in evidence]
         self.assertIn("repo_fingerprint", kinds)

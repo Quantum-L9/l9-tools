@@ -13,7 +13,7 @@ This file is a static example of the expected human-readable contract shape.
 
 ## Task
 
-- Repo: `Quantum-L9/PR_Repair`
+- Repo: `Quantum-L9/l9-pr-repair`
 - Objective: Add dispatch validation for PR repair corpus export.
 - Agent: `codex`
 

@@ -22,7 +22,7 @@ from l9_tools.contracts.validators import validate_contract_bundle
 class ContractCompilerTests(unittest.TestCase):
     def test_compile_workflow_contract_uses_security_profile(self) -> None:
         request = ContractRequest(
-            repo="Quantum-L9/PR_Repair",
+            repo="Quantum-L9/l9-pr-repair",
             objective="Add dispatch validation with token permissions and artifact coordinates.",
             agent="codex",
             expected_paths=[".github/workflows/dispatch-intelligence.yml"],

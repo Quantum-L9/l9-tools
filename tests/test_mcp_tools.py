@@ -33,7 +33,7 @@ class McpToolsTests(unittest.TestCase):
                 "params": {
                     "name": "l9_contract_compile",
                     "arguments": {
-                        "repo": "Quantum-L9/PR_Repair",
+                        "repo": "Quantum-L9/l9-pr-repair",
                         "agent": "codex",
                         "debt_intelligence_root": "examples/debt-intelligence",
                         "task": {
